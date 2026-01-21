@@ -1,0 +1,229 @@
+:root {
+    --bg-main: #001219;
+    --bg-panel: #001f2b;
+    --bg-card: #002d3d;
+    --border: #0a9396;
+    --accent: #94d2bd;
+    --accent-glow: #00f5ff;
+    --text-main: #e9ecef;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+body { background: var(--bg-main); color: var(--text-main); }
+
+.header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; background: linear-gradient(135deg, #001219, #005f73);
+    border-bottom: 2px solid var(--border);
+}
+
+.tabs { display: flex; background: #000a10; }
+
+.tab {
+    flex: 1; padding: 15px; border: none; background: transparent;
+    color: var(--accent); cursor: pointer; transition: 0.3s;
+}
+
+.tab.active { color: var(--accent-glow); border-bottom: 3px solid var(--accent-glow); font-weight: bold; }
+
+.content { padding: 30px; }
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.data-layout { display: flex; gap: 20px; }
+
+.data-panel {
+    width: 280px; background: var(--bg-panel); padding: 20px;
+    border-radius: 12px; border: 1px solid var(--border);
+    max-height: 80vh; overflow-y: auto;
+}
+
+#map {
+    flex: none; /* PREVENTS MAP FROM SHRINKING */
+    height: 620px; /* Locked height */
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #000;
+    margin-bottom: 20px;
+}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.about-card {
+    background: var(--bg-card); padding: 25px; border-radius: 10px;
+    border-left: 5px solid var(--border);
+}
+
+.flow-btn { color: var(--accent-glow); font-weight: bold; cursor: pointer; display: block; margin-top: 15px; }
+
+hr { margin: 15px 0; border: 0; border-top: 1px solid var(--border); }
+
+label { display: block; margin: 10px 0; font-size: 14px; cursor: pointer; }
+
+/* Container for each layer's legend row */
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 4px 8px;
+    background: rgba(0, 45, 61, 0.5); /* Matching your --bg-card theme */
+    border-radius: 4px;
+}
+
+/* Label text style */
+.legend-text {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Target the image from GeoServer */
+#legend-container img {
+    background: transparent; /* Removes the white box background */
+    display: block;
+    max-height: 28px; /* Ensures the image doesn't grow too tall */
+}
+
+/* Attribute Styles */
+#attribute-info {
+    font-size: 13px;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.attr-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(10, 147, 150, 0.3);
+}
+
+.attr-key { color: var(--accent); font-weight: bold; padding-right: 10px; }
+.attr-val { color: #fff; text-align: right; word-break: break-all; }
+
+/* Keep all your existing CSS and add these at the bottom */
+
+/* Updated in style.css */
+
+/* Updated in style.css for Table/Grid Format */
+
+/* Table Layout for Attribute Details */
+/* --- Table Layout for Attribute Details --- */
+#attribute-info {
+    width: 100%;
+    overflow-x: auto; /* Handles many columns by scrolling horizontally */
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.attr-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-main);
+    font-size: 13px;
+}
+
+.attr-table th {
+    background: rgba(10, 147, 150, 0.4);
+    color: var(--accent-glow);
+    text-align: left;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.attr-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(10, 147, 150, 0.1);
+    white-space: nowrap; /* Keeps data organized in one line like image 5c644d.png */
+}
+
+.attr-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Clear display for the container */
+.attribute-grid-display {
+    display: block !important;
+}
+/* Updated in style.css */
+#legend-container img {
+    height: 24px; /* Slightly larger for better visibility */
+    display: block;
+    
+    /* REMOVES WHITE BACKGROUND WITHOUT DARKENING THE SYMBOL */
+    /* This filter makes bright/white pixels transparent */
+    filter: brightness(1.1) contrast(1.2);
+    background-color: transparent;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.08); /* Slightly more visible background */
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(148, 210, 189, 0.2);
+}
+
+/* Add/Update these in style.css */
+
+/* Stacks the map and table in a column matching the map's width */
+.map-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Ensure the column itself doesn't grow beyond the viewport */
+    max-height: 85vh; 
+}
+
+/* Container for the table results */
+#attribute-info {
+    max-height: 300px; 
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.attr-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-main);
+    font-size: 13px;
+}
+
+.attr-table th {
+    background: rgba(10, 147, 150, 0.4);
+    color: var(--accent-glow);
+    text-align: left;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    font-size: 11px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.attr-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(10, 147, 150, 0.1);
+    white-space: nowrap; /* Keeps data organized in one line */
+}
+
+#attribute-container {
+    flex: 1; /* Table takes the remaining space below the map */
+    min-height: 200px; /* Ensures space for the table */
+    overflow: hidden;
+}

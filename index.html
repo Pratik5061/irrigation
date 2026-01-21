@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narmada Irrigation Portal</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <div class="header-left">
+            <h1>Narmada River Front Project</h1>
+            <p>Irrigation & Water Monitoring | Jabalpur city</p>
+        </div>
+        <div class="header-right">
+            <p>Survey Area: 350 Acres</p>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab active" onclick="openTab('about',this)">OBJECTIVES</button>
+        <button class="tab" onclick="openTab('data',this)">INTERACTIVE MAP</button>
+    </nav>
+
+    <section class="content">
+    
+
+    <div id="data" class="tab-content">
+    <div class="data-layout">
+        <div class="data-panel">
+            <h3>Raster Layers</h3>
+            <label><input type="checkbox" value="Ortho_1" onchange="toggleLayer(this)"> Ortho_1</label>
+            <label><input type="checkbox" value="DSM" onchange="toggleLayer(this)"> DSM (Surface)</label>
+            <label><input type="checkbox" value="DTM" onchange="toggleLayer(this)"> DTM (Terrain)</label>
+            <hr>
+            <h3>Vector Layers</h3>
+            <label><input type="checkbox" value="Buildings" onchange="toggleLayer(this)"> Buildings</label>
+            <label><input type="checkbox" value="GCP" onchange="toggleLayer(this)"> GCP</label>
+            <label><input type="checkbox" value="Nala" onchange="toggleLayer(this)"> Nala</label>
+            <label><input type="checkbox" value="River" onchange="toggleLayer(this)"> River</label>
+            <label><input type="checkbox" value="Shrub" onchange="toggleLayer(this)"> Shrub</label>
+            <label><input type="checkbox" value="Trees" onchange="toggleLayer(this)"> Trees</label>
+            <label><input type="checkbox" value="Road" onchange="toggleLayer(this)"> Road</label>
+            <label><input type="checkbox" value="Bridge" onchange="toggleLayer(this)"> Bridge</label>
+            <hr>
+            <h3>Water Flow Analysis</h3>
+            <label class="flow-btn">
+                <input type="checkbox" onchange="toggleFlowAnimation(this)"> 🌊 Show Water Flow
+            </label>
+            <div id="legend-container"></div>
+        </div>
+
+        <div class="map-column">
+            <div id="map"></div>
+
+            <div id="attribute-container" style="display: none;">
+                <div class="about-card" style="border-left: 5px solid var(--accent-glow); margin-top: 20px; width: 100%;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="color: var(--accent-glow);">Feature Details</h3>
+                        <button onclick="document.getElementById('attribute-container').style.display='none'" style="background:transparent; border:1px solid var(--border); color:white; cursor:pointer; padding:5px 10px; border-radius:4px;">Close</button>
+                    </div>
+                    <div id="attribute-info">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+       <div id="about" class="tab-content active">
+    <div class="objectives-stack">
+
+        <div class="about-card">
+            <h3>Purpose</h3>
+            <p>
+                Water-level monitoring and feature extraction of the
+                Narmada River Front in Jabalpur City using high-accuracy
+                drone-based geospatial data.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h3>Key Deliverables</h3>
+            <ul>
+                <li>High-resolution orthomosaic imagery</li>
+                <li>DEM, DSM, and DTM generation</li>
+                <li>Dense point cloud & 3D terrain models</li>
+            </ul>
+        </div>
+
+        <div class="about-card">
+            <h3>Project Objective</h3>
+            <p>
+                To conduct a <strong>high-accuracy drone-based photogrammetry survey</strong>
+                of the <strong>Narmada River Front, Jabalpur</strong> to generate
+                <strong>engineering-grade geospatial datasets</strong> supporting
+                riverfront planning, irrigation management, water-level monitoring,
+                and sustainable urban development.
+            </p>
+            <ul>
+                <li>UAV-based high-resolution aerial data acquisition</li>
+                <li>Accurate spatial baseline using GCPs & SOI benchmarks</li>
+                <li>Reliable data for planning, monitoring, and development</li>
+            </ul>
+        </div>
+
+        <div class="about-card">
+            <h3>Key Objectives & Intended Use</h3>
+            <ul>
+                <li>DGCA-compliant UAV survey of both river banks</li>
+                <li>Feature-level digitization of:
+                    <ul>
+                        <li>River edges & ghats</li>
+                        <li>Roads, built-up areas & terrain features</li>
+                    </ul>
+                </li>
+                <li>GIS & CAD compatible datasets for DPRs and tenders</li>
+                <li>Support for:
+                    <ul>
+                        <li>Riverfront development</li>
+                        <li>Irrigation & water resource management</li>
+                        <li>Flood & water-level assessment</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+    </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
